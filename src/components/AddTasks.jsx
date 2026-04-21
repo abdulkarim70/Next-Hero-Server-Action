@@ -1,9 +1,11 @@
 "use client";
+
+
 import {CirclePlus} from "@gravity-ui/icons";
-import {Button, Input, Label, Modal, Surface, TextField} from "@heroui/react";
+import {Button, ListBox, Select, Input, Label, Modal, Surface, TextField} from "@heroui/react";
 
 
-const AddTasks = () => {
+const AddTasks = ({creatATask}) => {
     return (
         <Modal>
       <Button variant="secondary">Add Task</Button>
@@ -23,36 +25,79 @@ const AddTasks = () => {
             </Modal.Header>
             <Modal.Body className="p-6">
               <Surface variant="default">
-                <form className="flex flex-col gap-4">
-                  <TextField className="w-full" name="name" type="text">
-                    <Label>Name</Label>
-                    <Input placeholder="Enter your name" />
+                <form action={creatATask} className="flex flex-col gap-4">
+                  <TextField className="w-full" name="title" type="text">
+                    <Label>Title</Label>
+                    <Input placeholder="Enter your Task Title" />
                   </TextField>
-                  <TextField className="w-full" name="email" type="email">
-                    <Label>Email</Label>
-                    <Input placeholder="Enter your email" />
+                  <TextField className="w-full" name="description" type="text">
+                    <Label>Description</Label>
+                    <Input placeholder="Enter your description" />
                   </TextField>
-                  <TextField className="w-full" name="phone" type="tel">
-                    <Label>Phone</Label>
-                    <Input placeholder="Enter your phone number" />
+                 <Select name="Priority" className="w-[256px]" placeholder="Priority">
+      <Label>Priority</Label>
+      <Select.Trigger>
+        <Select.Value />
+        <Select.Indicator />
+      </Select.Trigger>
+      <Select.Popover>
+        <ListBox>
+          <ListBox.Item id="Low" textValue="Low">
+           Low
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="Medium" textValue="Medium">
+            Medium
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="High" textValue="High">
+            High
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          
+        </ListBox>
+      </Select.Popover>
+    </Select>
+                
+           <Select name="Status" className="w-[256px]" placeholder="Status">
+      <Label>Status</Label>
+      <Select.Trigger>
+        <Select.Value />
+        <Select.Indicator />
+      </Select.Trigger>
+      <Select.Popover>
+        <ListBox>
+          <ListBox.Item id="Pending" textValue="Pending">
+      Pending
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="Inprogress" textValue="Inprogress">
+    Inprogress
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="Completed" textValue="Completed">
+            Completed
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          
+        </ListBox>
+      </Select.Popover>
+    </Select>
+
+                  <TextField className="w-full" name="assignTo">
+                    <Label>Assigned To</Label>
+                    <Input placeholder="Your Task Assign To" />
                   </TextField>
-                  <TextField className="w-full" name="company">
-                    <Label>Company</Label>
-                    <Input placeholder="Enter your company name" />
-                  </TextField>
-                  <TextField className="w-full" name="message">
-                    <Label>Message</Label>
-                    <Input placeholder="Enter your message" />
-                  </TextField>
-                </form>
-              </Surface>
-            </Modal.Body>
-            <Modal.Footer>
+                  <Modal.Footer>
               <Button slot="close" variant="secondary">
                 Cancel
               </Button>
-              <Button slot="close">Send Message</Button>
+              <Button type="submit">Submit</Button>
             </Modal.Footer>
+                </form>
+              </Surface>
+            </Modal.Body>
+            
           </Modal.Dialog>
         </Modal.Container>
       </Modal.Backdrop>
