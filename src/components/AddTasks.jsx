@@ -34,7 +34,7 @@ const AddTasks = ({creatATask}) => {
                     <Label>Description</Label>
                     <Input placeholder="Enter your description" />
                   </TextField>
-                 <Select name="Priority" className="w-[256px]" placeholder="Priority">
+                 <Select name="priority" className="w-[256px]" placeholder="priority">
       <Label>Priority</Label>
       <Select.Trigger>
         <Select.Value />
@@ -59,7 +59,7 @@ const AddTasks = ({creatATask}) => {
       </Select.Popover>
     </Select>
                 
-           <Select name="Status" className="w-[256px]" placeholder="Status">
+           <Select name="status" className="w-[256px]" placeholder="Status">
       <Label>Status</Label>
       <Select.Trigger>
         <Select.Value />
